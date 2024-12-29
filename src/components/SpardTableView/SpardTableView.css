@@ -1,0 +1,25 @@
+.buttons_host input {
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+
+.spard_table_table {
+	display: flex;
+}
+
+.spard_table_table div {
+	flex: 1;
+}
+
+.spard_table_result_host {
+	margin-top: 10px;
+	height: 20px;
+}
+
+.spard_table_result_duration {
+	height: 40px;
+}
+
+.table_progress_bar_host {
+	display: inline-block;
+}

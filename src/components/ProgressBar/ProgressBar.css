@@ -1,0 +1,39 @@
+.progress {
+    height: 5px;
+    width: 200px;
+    border-radius: 0;
+    background-color: lightgray;
+    overflow: hidden;
+	display: inline-block;
+}
+
+.progress.indeterminate {
+    background-color: green;
+}
+
+.progress-bar {
+    background-color: lightgreen;
+    background: linear-gradient(to right, green, lightgreen, green);
+    height: 5px;
+}
+
+.progress.indeterminate .progress-bar {
+    animation: moveLeft;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    position: relative;
+    width: 100px;
+}
+
+@keyframes widthZero {
+	100% { width: 0; }
+}
+
+@keyframes moveLeft {
+    from {
+        left: 0;
+    }
+    to {
+        left: 100%;
+    }
+}

@@ -1,0 +1,31 @@
+.run_button {
+	margin-top: 5px;
+	margin-right: 10px;
+}
+
+.spard_examples {
+	width: 400px;
+	margin-right: 10px;
+}
+
+.spard_table {
+	display: flex;
+}
+
+.spard_table div {
+	flex: 1;
+}
+
+.spard_result_host {
+	margin-top: 10px;
+	height: 20px;
+}
+
+.spard_result_duration {
+	margin-left: 5px;
+}
+
+.progress_bar_host {
+	display: inline-block;
+	margin-top: 5px;
+}
