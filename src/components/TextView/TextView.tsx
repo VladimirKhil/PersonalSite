@@ -65,10 +65,11 @@ export default class TextView extends React.Component<TextViewProps> {
 	render(): React.JSX.Element {
 		return (
 			<div className="spard_text_host">
-				<div>
+				<div className="spard_text_header">
 					<span>{this.props.header}</span>
 					<UploadButton disabled={this.props.disabled} onClick={this.openFile} />
 				</div>
+
 				<textarea
 					className="spard_text_editor"
 					wrap="off"
@@ -79,6 +80,7 @@ export default class TextView extends React.Component<TextViewProps> {
 					onDragOver={this.handleDragOver}
 					onDrop={this.handleDrop}
 				/>
+
 				<input
 					ref={this.fileRef}
 					type="file"

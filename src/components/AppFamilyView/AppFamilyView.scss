@@ -1,0 +1,82 @@
+.app-family-logo {
+	width: 100px;
+	height: 100px;
+	display: inline-block;
+}
+
+.app-family-title {
+	display: inline-block;
+	vertical-align: top;
+	margin-top: -9px;
+	margin-left: 15px;
+}
+
+.app-family-description {
+	font-size: 18px;
+	font-weight: normal;
+	margin-top: 5px;
+}
+
+.app-list {
+	margin-bottom: 20px;
+}
+
+.app-install-version {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.app-install {
+	display: inline-flex;
+	justify-content: center;
+	background: darkblue;
+	margin: 10px 0;
+	padding: 10px 20px;
+	width: 150px;
+	border-radius: 10px;
+	text-decoration: none;
+	color: white;
+}
+
+.app-install:hover {
+	background: blue;
+}
+
+.app-install-size {
+	font-size: 14px;
+	margin-left: 15px;
+	display: inline-block;
+	background-color: rgb(230, 230, 230);
+	padding: 10px;
+	width: 50px;
+	text-align: center;
+}
+
+.app-requirements {
+	font-size: 12px;
+	margin-bottom: 15px;
+}
+
+.app-known-issues th, .app-known-issues td {
+	background-color: rgb(230, 230, 230);
+	padding: 10px;
+}
+
+.app-screenshots {
+	display: flex;
+	overflow-x: auto;
+	height: 400px;
+}
+
+.app-screenshots img {
+	margin: 0 10px;
+}
+
+.app-releases {
+	margin-top: 10px;
+}
+
+.app-release {
+	margin: 10px 0;
+}

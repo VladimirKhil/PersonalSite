@@ -1,0 +1,22 @@
+.app {
+	margin: 50px 100px;
+	font-family: 'Open Sans', sans-serif;
+}
+
+.app header {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+select {
+	height: 40px;
+	font-size: 16px;
+	margin: 10px 0;
+	padding: 5px;
+}
+
+button, input[type="button"], input[type="submit"] {
+	padding: 5px 10px;
+}

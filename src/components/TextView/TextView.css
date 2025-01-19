@@ -6,6 +6,11 @@ input[type='file'] {
 	display: none;
 }
 
+.spard_text_header {
+	height: 35px;
+	margin-left: 2px;
+}
+
 .spard_text_editor {
 	width: calc(100% - 20px);
 	height: 200px;

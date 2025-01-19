@@ -1,0 +1,29 @@
+.tabControl {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.tab {
+	background: rgb(230, 230, 230);
+	color: darkgray;
+	width: 250px;
+	border-radius: 10px;
+	margin: 5px 10px 5px 0;
+	padding: 5px 10px;
+	font-weight: 500;
+	font-size: 24px;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.tab:hover {
+	color: rgb(100, 100, 100);
+}
+
+.tab.active {
+	color: black;
+	cursor: initial;
+}

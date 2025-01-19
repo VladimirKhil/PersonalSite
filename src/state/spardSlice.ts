@@ -1,9 +1,9 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import ProcessResult from 'spard-client/dist/models/ProcessResult';
 import SpardExampleBaseInfo from 'spard-client/dist/models/SpardExampleBaseInfo';
-import spardClient from '../utils/spard';
 import { AppDispatch, RootState } from './store';
 import getErrorMessage from '../utils/getErrorMessage';
+import DataContext from '../model/DataContext';
 
 interface SpardState {
 	inProgress: boolean;
@@ -57,8 +57,10 @@ export const {
 	setResult
 } = spardSlice.actions;
 
-export const load = () => async (dispatch: AppDispatch): Promise<void> => {
+export const loadSpardExamples = () => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
+	const spardClient = dataContext.spardClient!;
 	dispatch(setInProgress(true));
+
 	try {
 		const examples = await spardClient.getExamplesAsync();
 		dispatch(setExamples(examples));
@@ -71,9 +73,11 @@ export const load = () => async (dispatch: AppDispatch): Promise<void> => {
 	}
 }
 
-export const selectExample = (exampleId: number) => async (dispatch: AppDispatch): Promise<void> => {
+export const selectExample = (exampleId: number) => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
+	const spardClient = dataContext.spardClient!;
 	dispatch(setSelectedExampleId(exampleId));
 	dispatch(setInProgress(true));
+
 	try {
 		const example = await spardClient.getExampleAsync(exampleId);
 		dispatch(onInputChanged(example.input));
@@ -87,8 +91,9 @@ export const selectExample = (exampleId: number) => async (dispatch: AppDispatch
 	}
 }
 
-export const runTransform = () => async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
+export const runTransform = () => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
 	const state = getState().spard;
+	const spardClient = dataContext.spardClient!;
 
 	dispatch(setInProgress(true));
 	try {

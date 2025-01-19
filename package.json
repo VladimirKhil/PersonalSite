@@ -25,11 +25,12 @@
   "homepage": "https://github.com/VladimirKhil/PersonalSite#readme",
   "dependencies": {
     "@reduxjs/toolkit": "^2.5.0",
-    "appregistry-client": "^1.0.0",
+    "appregistry-client": "^1.2.0",
     "localized-strings": "^1.0.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
+    "react-router-dom": "^7.1.1",
     "redux": "^5.0.1",
     "spard-client": "^1.1.0"
   },
@@ -44,6 +45,8 @@
     "html-webpack-plugin": "^5.6.3",
     "jest": "^29.7.0",
     "postcss-loader": "^8.1.1",
+    "sass": "^1.83.1",
+    "sass-loader": "^16.0.4",
     "style-loader": "^4.0.0",
     "ts-jest": "^29.2.5",
     "ts-loader": "^9.5.1",

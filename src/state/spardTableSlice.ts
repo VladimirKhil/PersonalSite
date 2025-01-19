@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import localization from '../model/resources/localization';
-import spardClient from '../utils/spard';
 import { AppDispatch, RootState } from './store';
 import getErrorMessage from '../utils/getErrorMessage';
+import DataContext from '../model/DataContext';
 
 interface SpardTableState {
 	inProgress: boolean;
@@ -59,8 +59,9 @@ export const {
 	setOutputInfo
 } = spardTableSlice.actions;
 
-export const runTransform = () => async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
+export const runTransform = () => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
 	const state = getState().spardTable;
+	const spardClient = dataContext.spardClient!;
 
 	dispatch(setInProgress(true));
 	try {
@@ -82,8 +83,9 @@ ${localization.tableTransform}: ${result.tableTransformDuration};
 	}
 }
 
-export const generateTable = () => async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
+export const generateTable = () => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
 	const state = getState().spardTable;
+	const spardClient = dataContext.spardClient!;
 
 	dispatch(setInProgress(true));
 	try {
@@ -100,8 +102,9 @@ export const generateTable = () => async (dispatch: AppDispatch, getState: () =>
 	}
 }
 
-export const generateSourceCode = () => async (dispatch: AppDispatch, getState: () => RootState): Promise<void> => {
+export const generateSourceCode = () => async (dispatch: AppDispatch, getState: () => RootState, dataContext: DataContext): Promise<void> => {
 	const state = getState().spardTable;
+	const spardClient = dataContext.spardClient!;
 
 	dispatch(setInProgress(true));
 	try {

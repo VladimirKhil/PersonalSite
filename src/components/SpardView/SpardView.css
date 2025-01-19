@@ -1,6 +1,7 @@
-.run_button {
+input[type='button'].run_button {
 	margin-top: 5px;
 	margin-right: 10px;
+	padding: 10px 20px;
 }
 
 .spard_examples {
@@ -14,11 +15,6 @@
 
 .spard_table div {
 	flex: 1;
-}
-
-.spard_result_host {
-	margin-top: 10px;
-	height: 20px;
 }
 
 .spard_result_duration {
