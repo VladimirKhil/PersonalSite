@@ -10,7 +10,6 @@
 }
 
 .selector button.unselectable {
-	background-color: rgba(255, 255, 255, 0.3);
 	background-color: black;
 	color: white;
 }

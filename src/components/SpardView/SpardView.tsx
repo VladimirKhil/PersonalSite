@@ -19,6 +19,10 @@ export default function SpardView(): React.JSX.Element {
 	const dispatch = useAppDispatch();
 	const canTransform = state.input.length > 0 && state.transform.length > 0;
 
+	React.useEffect(() => {
+		document.title = localization.spardTransformer;
+	}, []);
+
 	return (
 		<div>
 			<header><h1>{localization.spardTransformer}</h1></header>

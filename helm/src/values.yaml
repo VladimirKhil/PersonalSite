@@ -1,0 +1,33 @@
+replicaCount: 1
+
+image:
+  repository: vladimirkhil/personal-site
+  tag: 1.0.0
+  pullPolicy: IfNotPresent
+
+nginxPrometheusExporter:
+  tag: 0.11.0
+  port: 9113
+  resources: {}
+
+nameOverride: ""
+fullnameOverride: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+securityContext: {}
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8080
+
+ingress:
+  enabled: false
+  className: nginx
+  pathType: Prefix
+  hosts: []
+  tls: []
+
+resources: {}

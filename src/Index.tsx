@@ -38,7 +38,7 @@ function run() {
 
 	if (currentSettings.culture) {
 		localization.setLanguage(currentSettings.culture);
-		config.spardClient.culture = currentSettings.culture;
+		config.spardClient.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
 		config.appRegistry.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
 	}
 

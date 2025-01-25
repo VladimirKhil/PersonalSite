@@ -14,6 +14,8 @@ interface AppFamilyState {
 	screenshots: string[];
 	installers: AppInstallerReleaseInfoResponse[];
 	releases: AppReleaseInfo[];
+	releasePage: number;
+	totalReleases: number;
 }
 
 const initialState: AppFamilyState = {
@@ -24,6 +26,8 @@ const initialState: AppFamilyState = {
 	screenshots: [],
 	installers: [],
 	releases: [],
+	releasePage: 0,
+	totalReleases: 0,
 };
 
 export const loadAppFamily = createAsyncThunk(
@@ -49,6 +53,8 @@ export const loadAppFamily = createAsyncThunk(
 	},
 );
 
+const PAGE_SIZE = 40;
+
 export const loadApp = createAsyncThunk(
 	'appFamily/loadApp',
 	async (arg: any, thunkAPI) => {
@@ -62,8 +68,23 @@ export const loadApp = createAsyncThunk(
 		const installers = await appRegistryClient.getAppInstallersAsync(arg);
 		thunkAPI.dispatch(appFamilySlice.actions.setInstallers(installers));
 
-		const releases = await appRegistryClient.getAppReleasesPageAsync(arg, 0, 40);
+		const releases = await appRegistryClient.getAppReleasesPageAsync(arg, 0, PAGE_SIZE);
 		thunkAPI.dispatch(appFamilySlice.actions.setReleases(releases.results));
+		thunkAPI.dispatch(appFamilySlice.actions.setReleasePage(0));
+		thunkAPI.dispatch(appFamilySlice.actions.setTotalReleases(releases.total));
+	},
+);
+
+export const loadReleasesPage = createAsyncThunk(
+	'appFamily/loadReleasesPage',
+	async (arg: { appId: string, page: number }, thunkAPI) => {
+		const dataContext = thunkAPI.extra as DataContext;
+		const appRegistryClient = dataContext.appRegistryClient!;
+
+		const releases = await appRegistryClient.getAppReleasesPageAsync(arg.appId, arg.page * PAGE_SIZE, PAGE_SIZE);
+		thunkAPI.dispatch(appFamilySlice.actions.setReleases(releases.results));
+		thunkAPI.dispatch(appFamilySlice.actions.setReleasePage(arg.page));
+		thunkAPI.dispatch(appFamilySlice.actions.setTotalReleases(releases.total));
 	},
 );
 
@@ -91,6 +112,12 @@ export const appFamilySlice = createSlice({
 		},
 		setReleases: (state: AppFamilyState, action) => {
 			state.releases = action.payload;
+		},
+		setReleasePage: (state: AppFamilyState, action) => {
+			state.releasePage = action.payload;
+		},
+		setTotalReleases: (state: AppFamilyState, action) => {
+			state.totalReleases = action.payload;
 		},
 	}
 });

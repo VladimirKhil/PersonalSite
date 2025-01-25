@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
 
 import './AppFamilyView.scss';
 import TabControl from '../TabControl/TabControl';
-import { loadApp } from '../../state/appFamilySlice';
+import { loadApp, loadReleasesPage } from '../../state/appFamilySlice';
 import localization, { getCulture } from '../../model/resources/localization';
+import Pagination from '../Pagination/Pagination';
 
 const AppFamilyView: React.FC = () => {
 	const appFamilyState = useAppSelector(state => state.appFamily);
@@ -13,6 +14,12 @@ const AppFamilyView: React.FC = () => {
 	const appFamily = appFamilyState.appFamilies.find(family => family.id === appFamilyId);
 	const app = appFamilyState.apps.find(app => app.id === appFamilyState.appId);
 	const activeAppIndex = appFamilyState.apps.findIndex(app => app.id === appFamilyState.appId);
+
+	useEffect(() => {
+		if (appFamily?.name) {
+			document.title = appFamily?.name;
+		}
+	}, [appFamily]);
 
 	if (!appFamily) {
 		return <div>{localization.familyNotFound}</div>;
@@ -106,6 +113,11 @@ const AppFamilyView: React.FC = () => {
 			{localization.getLanguage() === 'ru'
 				? <>
 					<h2>{localization.releaseHistory}</h2>
+
+					<Pagination
+						currentPage={appFamilyState.releasePage}
+						totalPages={Math.ceil(appFamilyState.totalReleases / 40)}
+						onPageChange={page => appDispatch(loadReleasesPage({ appId: appFamilyState.appId, page }))} />
 
 					<div className='app-releases'>
 						{appFamilyState.releases.map(release =>

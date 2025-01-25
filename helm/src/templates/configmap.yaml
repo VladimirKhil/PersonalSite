@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "personal-site.fullname" . }}
+data:
+  config.js: |
+    config = {
+      appRegistry: {
+		    serviceUri: 'https://vladimirkhil.com/appRegistry/'
+	    },
+	    spardClient: {
+		    serviceUri: 'https://vladimirkhil.com/spard/'
+	    }
+    };

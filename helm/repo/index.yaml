@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  personal-site:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-01-25T10:16:04.3825076+01:00"
+    description: Personal site
+    digest: d86f9253f9646d79177b847be627e9dedbc172bbf46465e6ca942f347070f119
+    name: personal-site
+    type: application
+    urls:
+    - personal-site-1.0.0.tgz
+    version: 1.0.0
+generated: "2025-01-25T10:16:04.3741625+01:00"
