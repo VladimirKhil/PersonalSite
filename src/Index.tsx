@@ -6,7 +6,7 @@ import store, { dataContext } from './state/store';
 import { loadSpardExamples } from './state/spardSlice';
 import { Provider } from 'react-redux';
 import SpardView from './components/SpardView/SpardView';
-import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, Routes } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import SpardTableView from './components/SpardTableView/SpardTableView';
 import AppFamilyView from './components/AppFamilyView/AppFamilyView';
 import App from './components/App/App';
@@ -60,6 +60,8 @@ function run() {
 		}
 	});
 
+	const basePath = window.location.pathname.startsWith('/new') ? '/new' : '/';
+
 	const router = createBrowserRouter(
 		createRoutesFromElements(
 			<>
@@ -80,7 +82,9 @@ function run() {
 					</Route>
 				</Route>
 			</>
-	));
+		), {
+			basename: basePath,
+		});
 
 	const root = createRoot(host);
 
