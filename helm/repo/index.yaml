@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   personal-site:
   - apiVersion: v2
+    appVersion: 1.0.2
+    created: "2025-01-27T19:33:53.6207747+01:00"
+    description: Personal site
+    digest: e869935b6c5818abc534d1d3b0782548fd2397271c3f1186485046d3296b1386
+    name: personal-site
+    type: application
+    urls:
+    - personal-site-1.0.2.tgz
+    version: 1.0.2
+  - apiVersion: v2
     appVersion: 1.0.1
-    created: "2025-01-25T10:31:14.1830402+01:00"
+    created: "2025-01-27T19:33:53.6170921+01:00"
     description: Personal site
     digest: f166c67d842cf74fc1468b1af27d7a30dfa33989c325458d74cf7ded4d7e341d
     name: personal-site
@@ -13,7 +23,7 @@ entries:
     version: 1.0.1
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2025-01-25T10:31:14.1824775+01:00"
+    created: "2025-01-27T19:33:53.6082672+01:00"
     description: Personal site
     digest: d86f9253f9646d79177b847be627e9dedbc172bbf46465e6ca942f347070f119
     name: personal-site
@@ -21,4 +31,4 @@ entries:
     urls:
     - personal-site-1.0.0.tgz
     version: 1.0.0
-generated: "2025-01-25T10:31:14.1803121+01:00"
+generated: "2025-01-27T19:33:53.5957078+01:00"
