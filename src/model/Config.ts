@@ -4,4 +4,5 @@ import SpardClientOptions from 'spard-client/dist/SpardClientOptions';
 export default interface Config {
 	appRegistry: AppRegistryClientOptions;
 	spardClient: SpardClientOptions;
+	ads: string | null;
 }

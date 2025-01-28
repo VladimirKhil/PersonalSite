@@ -10,5 +10,10 @@ data:
       },
       spardClient: {
         serviceUri: 'https://vladimirkhil.com/spard/'
-      }
+      },
+      ads: '{{ .Values.config.ads }}',
+    };
+
+    onLoad = function () {
+{{ .Values.config.onLoad | indent 6 }}
     };

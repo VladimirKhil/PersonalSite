@@ -38,6 +38,7 @@ const localization = new LocalizedStrings({
 		transformationTime: 'transformation time',
 		upload: 'Upload…',
 		version: 'Version',
+		webBrowser: 'Web browser',
 	},
 	ru: {
 		andLater: 'и выше',
@@ -71,6 +72,7 @@ const localization = new LocalizedStrings({
 		transformationTime: 'время преобразования',
 		upload: 'Загрузить…',
 		version: 'Версия',
+		webBrowser: 'Веб-браузер',
 	}
 },
 {

@@ -6,6 +6,7 @@ import TabControl from '../TabControl/TabControl';
 import { loadApp, loadReleasesPage } from '../../state/appFamilySlice';
 import localization, { getCulture } from '../../model/resources/localization';
 import Pagination from '../Pagination/Pagination';
+import Ads from '../Ads/Ads';
 
 const AppFamilyView: React.FC = () => {
 	const appFamilyState = useAppSelector(state => state.appFamily);
@@ -34,6 +35,7 @@ const AppFamilyView: React.FC = () => {
 		const minimumOSVersion = release?.minimumOSVersion;
 
 		switch (minimumOSVersion) {
+			case '0.0.0': return localization.webBrowser;
 			case '5.0.1000': return 'Windows XP ' + localization.andLater;
 			case '6.0.0': return 'Windows 7 ' + localization.andLater;
 			case '10.0.0': return 'Windows 10 ' + localization.andLater;
@@ -42,8 +44,8 @@ const AppFamilyView: React.FC = () => {
 	}
 
 	return (
-		<div>
-			<h1>
+		<div className='app-family-view'>
+			<h1 className='app-family-header'>
 				<img className='app-family-logo' src={appFamily.logoUri} alt={appFamily.name} />
 
 				<div className='app-family-title'>
@@ -109,6 +111,8 @@ const AppFamilyView: React.FC = () => {
 					</div>
 				</>
 			: null}
+
+			<Ads />
 
 			{localization.getLanguage() === 'ru'
 				? <>
