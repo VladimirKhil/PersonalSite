@@ -45,11 +45,18 @@ function run() {
 		localization.setLanguage(currentSettings.culture);
 		config.spardClient.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
 		config.appRegistry.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
-		config.myBackend.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
+
+		if (config.myBackend) {
+			config.myBackend.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
+		}
 	}
 
 	dataContext.appRegistryClient = new AppRegistryClient(config.appRegistry);
-	dataContext.myBackendClient = new MyBackendClient(config.myBackend);
+
+	if (config.myBackend) {
+		dataContext.myBackendClient = new MyBackendClient(config.myBackend);
+	}
+
 	dataContext.spardClient = new SpardClient(config.spardClient);
 
 	store.subscribe(() => {
@@ -67,7 +74,7 @@ function run() {
 		}
 	});
 
-	const basePath = window.location.pathname.startsWith('/new') ? '/new' : '/';
+	const basePath = window.location.pathname.startsWith('/v2') ? '/v2' : '/';
 
 	const Layout = () => (
 		<>
