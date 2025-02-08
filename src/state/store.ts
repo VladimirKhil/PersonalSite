@@ -3,10 +3,12 @@ import settingsReducer from './settingsSlice';
 import appFamilyReducer from './appFamilySlice';
 import spardReducer from './spardSlice';
 import spardTableReducer from './spardTableSlice';
+import newsReducer from './newsSlice';
 import DataContext from '../model/DataContext';
 
 export const dataContext: DataContext = {
 	appRegistryClient: null,
+	myBackendClient: null,
 	spardClient: null,
 };
 
@@ -15,7 +17,8 @@ const store = configureStore({
 		settings: settingsReducer,
 		appFamily: appFamilyReducer,
 		spard: spardReducer,
-		spardTable: spardTableReducer
+		spardTable: spardTableReducer,
+		news: newsReducer,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 		thunk: {

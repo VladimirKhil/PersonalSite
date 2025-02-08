@@ -66,7 +66,7 @@ const AppFamilyView: React.FC = () => {
 
 			<div>
 				{installerVersions.map(version =>
-					<div>
+					<div key={version} className='app-installers'>
 						<div className='app-install-version'>{localization.version} {version}</div>
 						<div className='app-requirements'>{getOSVersion(version)}</div>
 

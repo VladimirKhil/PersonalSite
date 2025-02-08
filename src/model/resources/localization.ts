@@ -22,6 +22,7 @@ const localization = new LocalizedStrings({
 		knownIssues: 'Known issues',
 		languageEn: 'English',
 		languageRu: 'Русский',
+		newsForTheYear: 'News for the {0} year',
 		releaseHistory: 'Release history',
 		result: 'Result',
 		screenshots: 'Screenshots',
@@ -39,6 +40,7 @@ const localization = new LocalizedStrings({
 		upload: 'Upload…',
 		version: 'Version',
 		webBrowser: 'Web browser',
+		websiteNews: 'Website news',
 	},
 	ru: {
 		andLater: 'и выше',
@@ -56,6 +58,7 @@ const localization = new LocalizedStrings({
 		knownIssues: 'Известные проблемы и решения',
 		languageEn: 'English',
 		languageRu: 'Русский',
+		newsForTheYear: 'Новости за {0} год',
 		releaseHistory: 'История версий',
 		result: 'Результат',
 		screenshots: 'Галерея',
@@ -73,6 +76,7 @@ const localization = new LocalizedStrings({
 		upload: 'Загрузить…',
 		version: 'Версия',
 		webBrowser: 'Веб-браузер',
+		websiteNews: 'Новости сайта',
 	}
 },
 {

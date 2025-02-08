@@ -9,7 +9,7 @@ declare const onLoad: () => void;
 
 const Ads: React.FC = () => {
 	React.useEffect(() => {
-		if (onLoad) {
+		if (typeof onLoad === 'function') {
 			onLoad();
 		}
 	}, []);

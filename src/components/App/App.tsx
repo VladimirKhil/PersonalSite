@@ -1,8 +1,8 @@
 import React from 'react';
-
-import './App.scss';
 import localization from '../../model/resources/localization';
 import LanguageView from '../LanguageView/LanguageView';
+
+import './App.scss';
 
 interface AppProps {
 	children: React.ReactNode;
