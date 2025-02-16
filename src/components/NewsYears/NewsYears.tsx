@@ -3,6 +3,8 @@ import { useAppSelector } from '../../state/hooks';
 import localization from '../../model/resources/localization';
 import { Link } from 'react-router-dom';
 
+import './NewsYears.scss';
+
 const NewsYears: React.FC = () => {
 	const news = useAppSelector(state => state.news);
 
@@ -11,7 +13,7 @@ const NewsYears: React.FC = () => {
 	}, [news.year]);
 
 	return (
-		<div>
+		<div className='news-years'>
 			<h1>{localization.websiteNews}</h1>
 
 			<ul>

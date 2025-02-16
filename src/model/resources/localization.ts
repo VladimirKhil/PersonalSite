@@ -8,6 +8,7 @@ export function getCulture(): string {
 const localization = new LocalizedStrings({
 	en: {
 		andLater: 'and later',
+		blog: 'Blog',
 		buildTransformTable: 'Ganarate transformation table',
 		classicTransform: 'Classic transform',
 		details: 'Details',
@@ -33,6 +34,7 @@ const localization = new LocalizedStrings({
 		spardTableTransformer: 'SPARD table transformer',
 		spardTransformer: 'SPARD transformer',
 		tableTransform: 'Table transform',
+		tags: 'Tags',
 		transform: 'Transform',
 		transformationRules: 'Transformation rules (SPARD)',
 		transformationRulesLight: 'Transformation rules (SPARD Lite)',
@@ -44,6 +46,7 @@ const localization = new LocalizedStrings({
 	},
 	ru: {
 		andLater: 'и выше',
+		blog: 'Блог',
 		buildTransformTable: 'Составить таблицу переходов',
 		classicTransform: 'Классическое преобразование',
 		details: 'Описание',
@@ -69,6 +72,7 @@ const localization = new LocalizedStrings({
 		spardTableTransformer: 'Табличный преобразователь SPARD',
 		spardTransformer: 'Преобразователь SPARD',
 		tableTransform: 'Табличное преобразование',
+		tags: 'Теги',
 		transform: 'Преобразовать',
 		transformationRules: 'Правила преобразования (SPARD)',
 		transformationRulesLight: 'Правила преобразования (SPARD Lite)',

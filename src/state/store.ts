@@ -4,6 +4,7 @@ import appFamilyReducer from './appFamilySlice';
 import spardReducer from './spardSlice';
 import spardTableReducer from './spardTableSlice';
 import newsReducer from './newsSlice';
+import blogsReducer from './blogsSlice';
 import DataContext from '../model/DataContext';
 
 export const dataContext: DataContext = {
@@ -19,6 +20,7 @@ const store = configureStore({
 		spard: spardReducer,
 		spardTable: spardTableReducer,
 		news: newsReducer,
+		blogs: blogsReducer,
 	},
 	middleware: (getDefaultMiddleware) => getDefaultMiddleware({
 		thunk: {

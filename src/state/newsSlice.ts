@@ -21,7 +21,7 @@ export const loadYears = createAsyncThunk(
 		const myBackendClient = dataContext.myBackendClient!;
 
 		const years = await myBackendClient.getNewsYearAsync();
-		return years.sort((a: number, b: number) => a - b);
+		return years.sort((a: number, b: number) => b - a);
 	},
 );
 
@@ -36,8 +36,8 @@ export const loadNews = createAsyncThunk(
 	},
 );
 
-export const newSlice = createSlice({
-	name: 'spard',
+export const newsSlice = createSlice({
+	name: 'news',
 	initialState,
 	reducers: { },
 	extraReducers: (builder) => {
@@ -56,6 +56,6 @@ export const newSlice = createSlice({
 });
 
 export const {
-} = newSlice.actions;
+} = newsSlice.actions;
 
-export default newSlice.reducer;
+export default newsSlice.reducer;

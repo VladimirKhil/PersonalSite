@@ -19,6 +19,9 @@ import News from './components/News/News';
 import { loadNews, loadYears } from './state/newsSlice';
 import NewsYears from './components/NewsYears/NewsYears';
 import NavigationWatcher from './components/NavigationWatcher/NavigationWatcher';
+import BlogEntriesView from './components/BlogEntriesView/BlogEntriesView';
+import { loadEntriesPage, loadEntry, loadTags } from './state/blogsSlice';
+import BlogEntryView from './components/BlogEntryView/BlogEntryView';
 
 declare const config: Config;
 
@@ -110,6 +113,21 @@ function run() {
 						<Route path=":year" element={<News />} loader={ async ({ params }) => {
 							const year = params.year ? parseInt(params.year, 10) : 0;
 							return store.dispatch(loadNews(year));
+						}} />
+					</Route>
+
+					<Route path='blog'>
+						<Route path='tags'>
+							<Route path=':tagId' element={<BlogEntriesView />} loader={async ({ params }) => {
+								const tagId = params.tagId ? parseInt(params.tagId, 10) : 0;
+								store.dispatch(loadTags());
+								return store.dispatch(loadEntriesPage(tagId));
+							}} />
+						</Route>
+
+						<Route path=':entryId' element={<BlogEntryView />} loader={async ({ params }) => {
+							const entryId = params.entryId ? parseInt(params.entryId, 10) : 0;
+							store.dispatch(loadEntry(entryId));
 						}} />
 					</Route>
 				</Route>
