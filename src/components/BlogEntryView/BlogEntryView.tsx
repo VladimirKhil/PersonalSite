@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppSelector } from '../../state/hooks';
 import localization from '../../model/resources/localization';
+import Ads from '../Ads/Ads';
 
 const BlogEntryView: React.FC = () => {
 	const blogs = useAppSelector(state => state.blogs);
@@ -22,6 +23,8 @@ const BlogEntryView: React.FC = () => {
 
 			<div className='entry-date'>{new Date(entry.dateTime).toLocaleDateString()}</div>
 			<div dangerouslySetInnerHTML={{ __html: entry.text }} />
+
+			<Ads />
 
 			{entry.tags.length > 0
 				? <div>

@@ -3,18 +3,21 @@ import Config from '../../model/Config';
 
 import './Ads.scss';
 
-declare const config: Config;
-
-declare const onLoad: () => void;
-
 const Ads: React.FC = () => {
-	React.useEffect(() => {
-		if (typeof onLoad === 'function') {
-			onLoad();
-		}
-	}, []);
+	return <div className="ads">
+		<div id="yandex_rtb_R-A-250473-1"></div>
 
-	return <div className="ads" dangerouslySetInnerHTML={{ __html: config && config.ads ? config.ads : '' }} />;
+		<script>
+			{`
+				window.yaContextCb.push(() => {
+					Ya.Context.AdvManager.render({
+						"blockId": "R-A-250473-1",
+						"renderTo": "yandex_rtb_R-A-250473-1"
+					});
+				});
+			`}
+		</script>
+</div>;
 };
 
 export default Ads;

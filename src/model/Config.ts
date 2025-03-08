@@ -6,5 +6,4 @@ export default interface Config {
 	appRegistry: AppRegistryClientOptions;
 	myBackend: MyBackendClientOptions;
 	spardClient: SpardClientOptions;
-	ads: string | null;
 }

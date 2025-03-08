@@ -33,5 +33,4 @@ ingress:
 resources: {}
 
 config:
-  ads: '<div></div>'
   onLoad: console.log('Site successfully loaded!');
