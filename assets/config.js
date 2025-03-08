@@ -8,6 +8,7 @@ config = {
 	spardClient: {
 		serviceUri: 'https://vladimirkhil.com/spard/'
 	},
+	ads: '<div></div>',
 };
 
 onLoad = function () {

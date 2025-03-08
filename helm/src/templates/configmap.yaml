@@ -14,6 +14,7 @@ data:
       spardClient: {
         serviceUri: 'https://vladimirkhil.com/spard/'
       },
+      ads: '{{ .Values.config.ads }}',
     };
 
     onLoad = function () {
