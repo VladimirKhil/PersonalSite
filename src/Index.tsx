@@ -22,6 +22,10 @@ import NavigationWatcher from './components/NavigationWatcher/NavigationWatcher'
 import BlogEntriesView from './components/BlogEntriesView/BlogEntriesView';
 import { loadEntriesPage, loadEntry, loadTags } from './state/blogsSlice';
 import BlogEntryView from './components/BlogEntryView/BlogEntryView';
+import FriendLinks from './components/FriendLinks/FriendLinks';
+import Files from './components/Files/Files';
+import About from './components/About/About';
+import Donate from './components/Donate/Donate';
 
 declare const config: Config;
 
@@ -130,6 +134,11 @@ function run() {
 							store.dispatch(loadEntry(entryId));
 						}} />
 					</Route>
+
+					<Route path='friend' element={<FriendLinks />} />
+					<Route path='files' element={<Files />} />
+					<Route path='about' element={<About />} />
+					<Route path='donate' element={<Donate />} />
 				</Route>
 			</>
 		), {
