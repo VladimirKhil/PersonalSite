@@ -1,12 +1,12 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../state/hooks';
-
-import './AppFamilyView.scss';
 import TabControl from '../TabControl/TabControl';
 import { loadApp, loadReleasesPage } from '../../state/appFamilySlice';
-import localization, { getCulture } from '../../model/resources/localization';
+import localization from '../../model/resources/localization';
 import Pagination from '../Pagination/Pagination';
 import Ads from '../Ads/Ads';
+
+import './AppFamilyView.scss';
 
 const AppFamilyView: React.FC = () => {
 	const appFamilyState = useAppSelector(state => state.appFamily);

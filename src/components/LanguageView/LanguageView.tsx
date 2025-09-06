@@ -25,6 +25,10 @@ export default function LanguageView(): React.JSX.Element {
 				value: 'en',
 				name: 'EN',
 				tooltip: localization.languageEn
+			}, {
+				value: 'sr',
+				name: 'SR',
+				tooltip: localization.languageSr
 			}]}
 			value={culture}
 			onValueChanged={onLanguageChanged}
