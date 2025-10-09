@@ -12,10 +12,12 @@
     "module": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "types": ["jest", "@testing-library/jest-dom"]
   },
   "include": [
-    "src"
+    "src",
+    "test"
   ],
   "compileOnSave": false
 }

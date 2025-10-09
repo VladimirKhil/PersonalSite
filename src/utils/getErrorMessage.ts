@@ -1,3 +1,7 @@
 export default function getErrorMessage(e: unknown): string {
-	return e instanceof Error ? e.message : (e as Record<string, unknown>).toString();
+	if (e instanceof Error) {
+		return e.message;
+	}
+
+	return String(e);
 }
