@@ -31,6 +31,10 @@ declare const config: Config;
 
 const STATE_KEY = 'Settings_State';
 
+function getLanguage(culture: string): string {
+	return culture === 'ru' ? 'ru-RU' : (culture === 'sr' ? 'sr-RS' : 'en-US');
+}
+
 function run() {
 	const host = document.getElementById('reactHost');
 
@@ -47,14 +51,16 @@ function run() {
 	}
 
 	let currentSettings = store.getState().settings;
+	const { culture } = currentSettings;
 
-	if (currentSettings.culture) {
-		localization.setLanguage(currentSettings.culture);
-		config.spardClient.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
-		config.appRegistry.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
+	if (culture) {
+		localization.setLanguage(culture);
+		const language = getLanguage(culture);
+		config.spardClient.culture = language;
+		config.appRegistry.culture = language;
 
 		if (config.myBackend) {
-			config.myBackend.culture = currentSettings.culture == 'ru' ? 'ru-RU' : 'en-US';
+			config.myBackend.culture = language;
 		}
 	}
 
