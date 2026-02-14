@@ -10,7 +10,7 @@ import { createBrowserRouter, createRoutesFromElements, Outlet, Route, RouterPro
 import SpardTableView from './components/SpardTableView/SpardTableView';
 import AppFamilyView from './components/AppFamilyView/AppFamilyView';
 import App from './components/App/App';
-import { loadAppFamily } from './state/appFamilySlice';
+import { loadAppFamilies, loadAppFamily } from './state/appFamilySlice';
 import { languageChanged } from './state/settingsSlice';
 import AppRegistryClient from 'appregistry-client';
 import SpardClient from 'spard-client';
@@ -26,6 +26,9 @@ import FriendLinks from './components/FriendLinks/FriendLinks';
 import Files from './components/Files/Files';
 import About from './components/About/About';
 import Donate from './components/Donate/Donate';
+import Home from './components/Home/Home';
+import BlogMainView from './components/BlogMainView/BlogMainView';
+import ProductsView from './components/ProductsView/ProductsView';
 
 declare const config: Config;
 
@@ -100,7 +103,18 @@ function run() {
 		createRoutesFromElements(
 			<>
 				<Route path='' element={<Layout />}>
-					<Route path="/" element={<div>Hello, world!</div>} />
+					<Route path="/" element={<Home />} loader={async () => {
+						store.dispatch(loadTags());
+						store.dispatch(loadEntriesPage(0));
+						const yearResult = await store.dispatch(loadYears());
+						const years = yearResult.payload as number[];
+						if (years && years.length > 0) {
+							store.dispatch(loadNews(years[0]));
+						}
+						return null;
+					}} />
+
+					<Route path='apps' element={<ProductsView />} loader={async () => store.dispatch(loadAppFamilies())} />
 
 					<Route path='si'>
 						<Route path='game' element={<AppFamilyView />} loader={async () => store.dispatch(loadAppFamily('16d03adf-18f1-4aa5-a6cd-3b25b5f86d4c'))} />
@@ -127,6 +141,10 @@ function run() {
 					</Route>
 
 					<Route path='blog'>
+						<Route path='' element={<BlogMainView />} loader={async () => {
+							store.dispatch(loadTags());
+							return store.dispatch(loadEntriesPage(0));
+						}} />
 						<Route path='tags'>
 							<Route path=':tagId' element={<BlogEntriesView />} loader={async ({ params }) => {
 								const tagId = params.tagId ? parseInt(params.tagId, 10) : 0;

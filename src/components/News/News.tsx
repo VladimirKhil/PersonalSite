@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useAppSelector } from '../../state/hooks';
 import localization from '../../model/resources/localization';
 
+import './News.scss';
+
 const News: React.FC = () => {
 	const news = useAppSelector(state => state.news);
 
@@ -12,15 +14,17 @@ const News: React.FC = () => {
 	}, [news.year]);
 
 	return (
-		<div className='news'>
-			<header className='news-header'><h1>{title}</h1></header>
+		<div className='news-view'>
+			<h1>{title}</h1>
 
-			{news.news.map((item, index) => (
-				<div key={index} className='news-item'>
-					<h3 className='news-item-date'>{new Date(item.dateTime).toLocaleDateString()}</h3>
-					<div className='news-item-title' dangerouslySetInnerHTML={{ __html: item.text }} />
-				</div>
-			))}
+			<div className='news-list'>
+				{news.news.map((item, index) => (
+					<div key={index} className='news-card'>
+						<div className='news-card-date'>{new Date(item.dateTime).toLocaleDateString()}</div>
+						<div className='news-card-text' dangerouslySetInnerHTML={{ __html: item.text }} />
+					</div>
+				))}
+			</div>
 		</div>
 	);
 };

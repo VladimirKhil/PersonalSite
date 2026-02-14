@@ -30,6 +30,20 @@ const initialState: AppFamilyState = {
 	totalReleases: 0,
 };
 
+export const loadAppFamilies = createAsyncThunk(
+	'appFamily/loadAppFamilies',
+	async (_arg: void, thunkAPI) => {
+		const { appFamilies } = (thunkAPI.getState() as RootState).appFamily;
+		const dataContext = thunkAPI.extra as DataContext;
+		const appRegistryClient = dataContext.appRegistryClient!;
+
+		if (appFamilies.length === 0) {
+			const appFamiliesInfo = await appRegistryClient.getFamiliesAsync();
+			thunkAPI.dispatch(appFamilySlice.actions.setAppFamilies(appFamiliesInfo));
+		}
+	},
+);
+
 export const loadAppFamily = createAsyncThunk(
 	'appFamily/loadAppFamily',
 	async (arg: any, thunkAPI) => {

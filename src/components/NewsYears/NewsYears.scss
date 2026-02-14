@@ -1,3 +1,43 @@
 .news-years {
+	max-width: 900px;
+	margin: 0 auto;
+
+	h1 {
+		font-size: 1.8rem;
+		color: #333;
+		margin-bottom: 24px;
+	}
+}
+
+.news-years-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+	gap: 12px;
+}
+
+.news-year-card {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: #fff;
+	border-radius: 10px;
+	padding: 20px 16px;
+	text-decoration: none;
 	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+	transition: box-shadow 0.2s, transform 0.2s;
+
+	&:hover {
+		box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+		transform: translateY(-1px);
+		color: #e67e22;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.news-years-grid {
+		grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+	}
 }

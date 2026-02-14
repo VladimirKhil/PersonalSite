@@ -1,20 +1,104 @@
 html,body { height:100%; }
 
 body, #reactHost {
-	background-color: white;
+	background-color: #f5f5f5;
 	margin: 0;
 }
 
 .app {
-	margin: 20px 10px;
 	font-family: 'Open Sans', sans-serif;
+	min-height: 100vh;
 }
 
-.app header {
+.app-header {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	background-color: #fff;
+	padding: 0 20px;
+	height: 60px;
+	border-bottom: 1px solid #e0e0e0;
+	position: sticky;
+	top: 0;
+	z-index: 100;
+}
+
+.app-header-left {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.app-logo {
+	font-size: 18px;
+	font-weight: 600;
+	color: #333;
+	text-decoration: none;
+
+	&:hover {
+		color: #e67e22;
+	}
+}
+
+.app-menu-toggle {
+	display: none;
+	background: none;
+	border: none;
+	font-size: 24px;
+	cursor: pointer;
+	padding: 4px 8px;
+	color: #333;
+}
+
+.app-nav {
+	display: flex;
+	gap: 24px;
+	align-items: center;
+
+	a {
+		text-decoration: none;
+		color: #333;
+		font-size: 15px;
+		font-weight: 500;
+		padding: 4px 0;
+		border-bottom: 2px solid transparent;
+		transition: border-color 0.2s, color 0.2s;
+
+		&:hover {
+			color: #e67e22;
+			border-bottom-color: #e67e22;
+		}
+	}
+}
+
+.app-header-right {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.app-sigame-btn {
+	background-color: #e67e22;
+	color: #fff;
+	border: none;
+	border-radius: 20px;
+	padding: 6px 18px;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 0.2s;
+
+	&:hover {
+		background-color: #d35400;
+	}
+}
+
+.app-main {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 24px 20px;
 }
 
 select {
@@ -28,8 +112,44 @@ button, input[type="button"], input[type="submit"] {
 	padding: 5px 10px;
 }
 
-@media screen and (min-width: 768px) {
-	.app {
-		margin: 50px 100px;
+@media screen and (max-width: 768px) {
+	.app-header {
+		flex-wrap: wrap;
+		height: auto;
+		padding: 10px 16px;
+	}
+
+	.app-header-left {
+		width: 100%;
+		justify-content: space-between;
+	}
+
+	.app-menu-toggle {
+		display: block;
+	}
+
+	.app-nav {
+		display: none;
+		flex-direction: column;
+		width: 100%;
+		gap: 0;
+		padding: 8px 0;
+
+		&.app-nav--open {
+			display: flex;
+		}
+
+		a {
+			padding: 10px 0;
+			border-bottom: 1px solid #eee;
+		}
+	}
+
+	.app-header-right {
+		display: none;
+	}
+
+	.app-main {
+		padding: 16px 12px;
 	}
 }

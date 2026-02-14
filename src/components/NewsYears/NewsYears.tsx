@@ -16,13 +16,13 @@ const NewsYears: React.FC = () => {
 		<div className='news-years'>
 			<h1>{localization.websiteNews}</h1>
 
-			<ul>
+			<div className='news-years-grid'>
 				{news.years.map((year, index) => (
-					<li key={index}>
-						<Link to={'/news/' + year}>{year}</Link>
-					</li>
+					<Link key={index} to={'/news/' + year} className='news-year-card'>
+						{year}
+					</Link>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 };

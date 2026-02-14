@@ -3,10 +3,11 @@ import { useAppSelector } from '../../state/hooks';
 import localization from '../../model/resources/localization';
 import { Link } from 'react-router-dom';
 
-import './BlogEntriesView.scss';
+import './BlogMainView.scss';
 
 const TEXT_LIMIT = 300;
 const WORDS_PER_MINUTE = 200;
+const BLOG_ENTRIES_LIMIT = 10;
 
 function stripHtml(html: string): string {
 	const tmp = document.createElement('div');
@@ -30,53 +31,65 @@ function trimText(text: string, limit: number): string {
 	return plainText.length > limit ? plainText.substring(0, limit) + '...' : plainText;
 }
 
-const BlogEntriesView: React.FC = () => {
+const BlogMainView: React.FC = () => {
 	const blogs = useAppSelector(state => state.blogs);
-	const tag = blogs.tags.find(tag => tag.id === blogs.tagId);
 
 	useEffect(() => {
-		if (tag?.value) {
-			document.title = tag?.value;
-		}
-	}, [tag]);
+		document.title = localization.blog;
+	}, []);
 
 	return (
-		<div className='blog-entries-view'>
-			<h1>{tag?.value ?? localization.blog}</h1>
+		<div className='blog-main'>
+			{blogs.tags.length > 0 && (
+				<div className='blog-main-tags'>
+					<h2 className='blog-main-tags-title'>{localization.tags}</h2>
+					<div className='blog-main-tags-grid'>
+						{blogs.tags.map(tag => (
+							<Link
+								key={tag.id}
+								to={`/blog/tags/${tag.id}`}
+								className='blog-main-tag'
+							>
+								{tag.value}
+							</Link>
+						))}
+					</div>
+				</div>
+			)}
 
-			<div className='blog-entries-list'>
-				{blogs.entriesPage.entries.map((entry, index) => {
+			<div className='blog-main-entries'>
+				{blogs.entriesPage.entries.slice(0, BLOG_ENTRIES_LIMIT).map((entry, index) => {
 					const image = extractFirstImage(entry.text);
 					const readingTime = estimateReadingTime(entry.text);
 
 					return (
-						<article key={index} className='blog-entry-card'>
-							<div className='blog-entry-card-content'>
-								<h2 className='blog-entry-card-title'>
-									<Link to={'/blog/' + entry.id}>{entry.title}</Link>
+						<article key={index} className='blog-main-entry'>
+							<div className='blog-main-entry-content'>
+								<h2 className='blog-main-entry-title'>
+									<Link to={`/blog/${entry.id}`}>{entry.title}</Link>
 								</h2>
 
-								<div className='blog-entry-card-meta'>
-									<span className='blog-entry-card-date'>
+								<div className='blog-main-entry-meta'>
+									<span className='blog-main-entry-date'>
 										{new Date(entry.dateTime).toLocaleDateString()}
 									</span>
-									<span className='blog-entry-card-separator'>•</span>
-									<span className='blog-entry-card-reading-time'>
+									<span className='blog-main-entry-separator'>•</span>
+									<span className='blog-main-entry-reading-time'>
 										{localization.readingTime.replace('{0}', readingTime.toString())}
 									</span>
 								</div>
 
-								<p className='blog-entry-card-excerpt'>
+								<p className='blog-main-entry-excerpt'>
 									{trimText(entry.text, TEXT_LIMIT)}
 								</p>
 
 								{entry.tags.length > 0 && (
-									<div className='blog-entry-card-tags'>
+									<div className='blog-main-entry-tags'>
 										{entry.tags.map((tag, tagIndex) => (
 											<Link
 												key={tagIndex}
 												to={`/blog/tags/${tag.id}`}
-												className='blog-entry-card-tag'
+												className='blog-main-entry-tag'
 											>
 												{tag.value}
 											</Link>
@@ -86,7 +99,7 @@ const BlogEntriesView: React.FC = () => {
 							</div>
 
 							{image && (
-								<div className='blog-entry-card-image'>
+								<div className='blog-main-entry-image'>
 									<img src={image} alt={entry.title} />
 								</div>
 							)}
@@ -98,4 +111,4 @@ const BlogEntriesView: React.FC = () => {
 	);
 };
 
-export default BlogEntriesView;
+export default BlogMainView;

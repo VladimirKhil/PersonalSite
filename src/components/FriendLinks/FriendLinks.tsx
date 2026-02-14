@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react';
 import localization from '../../model/resources/localization';
 
+import './FriendLinks.scss';
+
 const FriendLinks: React.FC = () => {
 	useEffect(() => {
 		document.title = localization.friendLinks;
@@ -24,25 +26,28 @@ const FriendLinks: React.FC = () => {
 	];
 
 	return (
-		<div>
+		<div className='friend-links-view'>
 			<h1>{localization.friendLinks}</h1>
 
-			<ul>
+			<div className='friend-links-grid'>
 				{generalLinks.map((link) => (
-					<li key={link.url}>
-						<a href={link.url}>{link.title}</a>
-					</li>
+					<a key={link.url} href={link.url} className='friend-link-card' target='_blank' rel='noopener noreferrer'>
+						<div className='friend-link-badge'>🔗</div>
+						<div className='friend-link-title'>{link.title}</div>
+					</a>
 				))}
-			</ul>
+			</div>
 
 			<h2>{localization.tvGamesHeader}</h2>
-			<ul>
+
+			<div className='friend-links-grid'>
 				{tvGameLinks.map((link) => (
-					<li key={link.url}>
-						<a href={link.url}>{link.title}</a>
-					</li>
+					<a key={link.url} href={link.url} className='friend-link-card' target='_blank' rel='noopener noreferrer'>
+						<div className='friend-link-badge'>🎮</div>
+						<div className='friend-link-title'>{link.title}</div>
+					</a>
 				))}
-			</ul>
+			</div>
 		</div>
 	);
 };

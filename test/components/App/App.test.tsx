@@ -4,7 +4,12 @@ import App from '../../../src/components/App/App';
 
 // Mock the localization module
 jest.mock('../../../src/model/resources/localization', () => ({
-	home: 'Home'
+	home: 'Home',
+	blog: 'Blog',
+	aboutTheAuthor: 'About the Author',
+	products: 'Products',
+	news: 'News',
+	files: 'Files',
 }));
 
 // Mock the LanguageView component
@@ -32,7 +37,7 @@ describe('App Component', () => {
 
 		const homeLink = screen.getByRole('link', { name: 'Home' });
 		expect(homeLink).toBeInTheDocument();
-		expect(homeLink).toHaveAttribute('href', 'https://vladimirkhil.com');
+		expect(homeLink).toHaveAttribute('href', '/');
 	});
 
 	test('renders children content', () => {

@@ -1,6 +1,13 @@
 import React, { useEffect } from 'react';
 import localization from '../../model/resources/localization';
 
+import './Files.scss';
+
+function getFileExtension(url: string): string {
+	const parts = url.split('.');
+	return parts[parts.length - 1].toUpperCase();
+}
+
 const Files: React.FC = () => {
 	useEffect(() => {
 		document.title = localization.files;
@@ -73,54 +80,57 @@ const Files: React.FC = () => {
 
 	const isRussian = localization.getLanguage() === 'ru';
 
+	function renderFileCards(links: { title: string; url: string }[]) {
+		return (
+			<div className='files-grid'>
+				{links.map((link) => {
+					const ext = getFileExtension(link.url);
+					return (
+						<a key={link.url} href={link.url} className='file-card'>
+							<div className={`file-card-badge file-badge--${ext.toLowerCase()}`}>{ext}</div>
+							<div className='file-card-title'>{link.title}</div>
+						</a>
+					);
+				})}
+			</div>
+		);
+	}
+
+	function renderLinkCards(links: { title: string; url: string }[]) {
+		return (
+			<div className='files-grid'>
+				{links.map((link) => (
+					<a key={link.url} href={link.url} className='file-card' target='_blank' rel='noopener noreferrer'>
+						<div className='file-card-badge file-badge--link'>🔗</div>
+						<div className='file-card-title'>{link.title}</div>
+					</a>
+				))}
+			</div>
+		);
+	}
+
 	return (
-		<div>
+		<div className='files-view'>
 			<h1>{localization.files}</h1>
 
 			<h2>{localization.games}</h2>
-			<ul>
-				{fileLinks.map((link) => (
-					<li key={link.url}>
-						<a href={link.url}>{link.title}</a>
-					</li>
-				))}
-			</ul>
+			{renderFileCards(fileLinks)}
 
 			<h2>SPARD</h2>
-			<ul>
-				{spardLinks.map((link) => (
-					<li key={link.url}>
-						<a href={link.url}>{link.title}</a>
-					</li>
-				))}
-			</ul>
+			{renderFileCards(spardLinks)}
 
 			{isRussian && (
 				<>
 					<h2>Кубок Интеллекта 2007</h2>
-					<ul>
-						{kubok2007Links.map((link) => (
-							<li key={link.url}>
-								<a href={link.url}>{link.title}</a>
-							</li>
-						))}
-					</ul>
+					{renderLinkCards(kubok2007Links)}
 
 					<h2>Кубок Интеллекта 2008</h2>
-					<ul>
-						{kubok2008Links.map((link) => (
-							<li key={link.url}>
-								<a href={link.url}>{link.title}</a>
-							</li>
-						))}
-					</ul>
+					{renderLinkCards(kubok2008Links)}
 
 					<h2>Прочее</h2>
-					<ul>
-						<li>
-							<a href="https://vladimirkhil.com/content/docs/EVOLUTION.pdf">Эволюция. Концепция игры</a>
-						</li>
-					</ul>
+					{renderFileCards([
+						{ title: 'Эволюция. Концепция игры', url: 'https://vladimirkhil.com/content/docs/EVOLUTION.pdf' },
+					])}
 				</>
 			)}
 		</div>

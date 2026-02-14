@@ -45,7 +45,7 @@ export const loadEntriesPage = createAsyncThunk(
 		const myBackendClient = dataContext.myBackendClient!;
 
 		const entriesPage = await myBackendClient.getBlogEntriesAsync(arg, 0, 100);
-		entriesPage.entries = entriesPage.entries.sort((a: BlogEntry, b: BlogEntry) => new Date(b.dateTime).getDate() - new Date(a.dateTime).getDate());
+		entriesPage.entries = entriesPage.entries.sort((a: BlogEntry, b: BlogEntry) => new Date(b.dateTime).getTime() - new Date(a.dateTime).getTime());
 		return entriesPage;
 	},
 );
