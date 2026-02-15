@@ -58,7 +58,7 @@ module.exports = (env, argv) => {
 			},
 			chunkFilename: '[name].[contenthash].js',
 			path: path.resolve(__dirname, 'dist'),
-			publicPath: argv.mode === 'development' ? '/' : '/v2/',
+			publicPath: '/',
 			crossOriginLoading: 'anonymous',
 			library: env.type && env.type.startsWith('library') ? 'sigame' : undefined,
 			libraryTarget: env.type && env.type.startsWith('library') ? 'var' : undefined
