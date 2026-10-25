@@ -16,12 +16,6 @@ const Donate: React.FC = () => {
 			url: 'https://boosty.to/vladimirkhil',
 			description: localization.donateBoostyDescription,
 			className: 'boosty'
-		},
-		{
-			name: 'YooMoney',
-			url: 'https://yoomoney.ru/to/410012283941753',
-			description: localization.donateYooMoneyDescription,
-			className: 'yoomoney'
 		}
 	];
 
